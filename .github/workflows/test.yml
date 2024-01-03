@@ -1,9 +1,9 @@
-name: Deploy @sanddb/client to NPM
+name: Run tests
 
 on:
-  # Runs only on main branch
+  # Runs on pushes to all branches except main.
   push:
-    branches: ["main"]
+    branches-ignore: ["main"]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
