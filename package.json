@@ -5,6 +5,15 @@
   "license": "MIT",
   "author": "Jeremy Kirkham",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/streame/sand-db-client.git"
+  },
+  "files": [
+    "dist",
+    "src",
+    "bin"
+  ],
   "engines": {
     "node": ">=18"
   },
@@ -17,11 +26,6 @@
   "bin": {
     "sanddb": "dist/bin/sanddb.js"
   },
-  "files": [
-    "dist",
-    "src",
-    "bin"
-  ],
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
