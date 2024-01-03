@@ -14,8 +14,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    env:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -42,5 +40,5 @@ jobs:
       - name: Install Dependencies
         if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: npm ci
-      - run: npm run build
-      - run: npm run publish
+      - run: npm run lint
+      - run: npm run test
