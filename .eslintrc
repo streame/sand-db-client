@@ -1,0 +1,17 @@
+{
+  "root": true,
+  "extends": ["eslint:recommended", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": true
+  },
+  "env": {
+    "node": true
+  },
+  "ignorePatterns": [
+    // Ignore dotfiles
+    ".*.js",
+    "node_modules/",
+    "dist/"
+  ]
+}
