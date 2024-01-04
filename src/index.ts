@@ -1,5 +1,6 @@
 export { SandDBClient } from "./BaseClient.js";
 export { GenericSandDBClient } from "./GenericClient.js";
+export type { QueryArgument, TimestampArguments } from "./QueryArgument.js";
 export type {
   Column,
   ColumnType,
