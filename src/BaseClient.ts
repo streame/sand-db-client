@@ -43,6 +43,21 @@ export abstract class SandDBClient<T = unknown> {
     }
   }
 
+  public async rawQuery(query: string): Promise<QueryResult<T>> {
+    try {
+      const result = await axios.get<QueryResult<T>>(`${this.sandDBUrl}/raw`, {
+        params: {
+          query,
+          apiKey: this.apiKey,
+        },
+      });
+      return result.data;
+    } catch (err) {
+      console.error(err);
+      throw new Error("Failed to raw query data from SandDB");
+    }
+  }
+
   private get sandDBUrl(): string {
     return `${this.endpoint}/v${this.versionNumber}/${this.pipelineId}`;
   }
