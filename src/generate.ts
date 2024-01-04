@@ -21,12 +21,9 @@ export const generate = async (argv: Args) => {
   console.log(chalk.blue("Generating SandDB clients..."));
   const apiKey = process.env.SANDDB_API_KEY ?? argv.apiKey;
   if (!apiKey) {
-    console.error(
-      chalk.red(
-        "Cannot generate SandDB clients as you're missing the SANDDB_API_KEY"
-      )
+    throw new Error(
+      "Cannot generate SandDB clients as you're missing a SANDDB_API_KEY environment variable."
     );
-    throw new Error("Missing SANDDB_API_KEY");
   }
 
   // Load schema.
@@ -105,7 +102,6 @@ export const generate = async (argv: Args) => {
     });
     await project.save();
   } catch (err) {
-    console.error(chalk.red("Failed to query data from SandDB"));
-    throw new Error("Failed to query data from SandDB");
+    throw new Error("Failed to load your schemas from SandDB");
   }
 };
