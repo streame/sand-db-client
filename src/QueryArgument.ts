@@ -9,7 +9,7 @@ export type TimestampArguments = {
   hour?: number[] | number;
 };
 
-export interface QueryArgument<T> {
+export interface QueryArgument<T = unknown> {
   where: GeneratedArguments<T> & TimestampArguments;
   limit?: number;
   offset?: number;

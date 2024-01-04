@@ -1,5 +1,6 @@
 import axios from "axios";
 import { QueryArgument } from "./QueryArgument.js";
+import { QueryResult } from "./QueryResult.js";
 
 export abstract class SandDBClient<T = unknown> {
   protected abstract endpoint: string;
@@ -27,9 +28,9 @@ export abstract class SandDBClient<T = unknown> {
     }
   }
 
-  public async query(query: QueryArgument<T>): Promise<T[]> {
+  public async query(query: QueryArgument<T>): Promise<QueryResult<T>> {
     try {
-      const result = await axios.get<T[]>(this.sandDBUrl, {
+      const result = await axios.get<QueryResult<T>>(this.sandDBUrl, {
         params: {
           query,
           apiKey: this.apiKey,
