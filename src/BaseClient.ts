@@ -43,9 +43,9 @@ export abstract class SandDBClient<T = unknown> {
     }
   }
 
-  public async rawQuery(query: string): Promise<QueryResult<T>> {
+  public async rawQuery<U = T>(query: string): Promise<QueryResult<U>> {
     try {
-      const result = await axios.get<QueryResult<T>>(`${this.sandDBUrl}/raw`, {
+      const result = await axios.get<QueryResult<U>>(`${this.sandDBUrl}/raw`, {
         params: {
           query,
           apiKey: this.apiKey,
