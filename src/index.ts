@@ -4,6 +4,7 @@ export type {
   QueryArgument,
   TimestampArguments,
   WhereCondition,
+  WhereSpecialCondition,
 } from "./QueryArgument.js";
 export type { QueryResult } from "./QueryResult.js";
 export type {
