@@ -14,9 +14,6 @@ export type WhereCondition<T> =
       iLike?: T;
       notILike?: T;
       contains?: T;
-      AND?: GeneratedArguments<T>[];
-      OR?: GeneratedArguments<T>[];
-      NOT?: GeneratedArguments<T>[];
     }
   | T;
 
@@ -31,8 +28,16 @@ export type TimestampArguments = {
   hour?: WhereCondition<number>;
 };
 
+type CombinedArguments<T> = GeneratedArguments<T> & TimestampArguments;
+
+export type WhereSpecialCondition<T> = {
+  AND?: GeneratedArguments<T>[];
+  OR?: GeneratedArguments<T>[];
+  NOT?: GeneratedArguments<T>[];
+};
+
 export interface QueryArgument<T = unknown> {
-  where: GeneratedArguments<T> & TimestampArguments;
+  where: CombinedArguments<T> & WhereSpecialCondition<T>;
   limit?: number;
   offset?: number;
 }

@@ -15,5 +15,20 @@ describe("QueryArgument", () => {
       },
     };
     expect(queryArgument).toBeDefined();
+
+    const queryArgument2: QueryArgument = {
+      where: {
+        year: 2024,
+        AND: [
+          {
+            year: {
+              equals: 2024,
+            },
+            month: 12,
+          },
+        ],
+      },
+    };
+    expect(queryArgument2).toBeDefined();
   });
 });
