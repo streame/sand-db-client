@@ -26,6 +26,9 @@ export type BaseArguments = {
   month?: WhereCondition<number>;
   day?: WhereCondition<number>;
   hour?: WhereCondition<number>;
+  minutesSinceEpoch?: WhereCondition<number>;
+  hoursSinceEpoch?: WhereCondition<number>;
+  daysSinceEpoch?: WhereCondition<number>;
 };
 
 export type CombinedArguments<T> = GeneratedArguments<T> & BaseArguments;
