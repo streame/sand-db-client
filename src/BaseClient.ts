@@ -1,8 +1,9 @@
 import axios from "axios";
+import { GroupByArgument } from "./GroupByArgument.js";
 import { QueryArgument } from "./QueryArgument.js";
 import { QueryResult } from "./QueryResult.js";
 
-export abstract class SandDBClient<T = unknown> {
+export abstract class SandDBClient<T> {
   protected abstract endpoint: string;
   protected abstract versionNumber: number;
   protected abstract pipelineId: string;
@@ -56,6 +57,10 @@ export abstract class SandDBClient<T = unknown> {
       console.error(err);
       throw new Error("Failed to raw query data from SandDB");
     }
+  }
+
+  public async groupBy(query: GroupByArgument<T>): Promise<QueryResult<T>> {
+    return this.query(query);
   }
 
   private get sandDBUrl(): string {
