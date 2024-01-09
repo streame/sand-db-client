@@ -1,6 +1,7 @@
 export { SandDBClient } from "./BaseClient.js";
 export { GenericSandDBClient } from "./GenericClient.js";
 export type { GroupByArgument } from "./GroupByArgument.js";
+export type { GroupByResult } from "./GroupByResult.js";
 export type {
   BaseArguments,
   QueryArgument,
