@@ -10,6 +10,9 @@ export type BaseArguments = {
   month?: true;
   day?: true;
   hour?: true;
+  minutesSinceEpoch?: true;
+  hoursSinceEpoch?: true;
+  daysSinceEpoch?: true;
   _all?: true;
 };
 
