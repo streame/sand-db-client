@@ -34,7 +34,7 @@ export abstract class SandDBClient<T = unknown> {
     try {
       const result = await axios.get<QueryResult<T>>(this.sandDBUrl, {
         params: {
-          query,
+          query: JSON.stringify(query),
           apiKey: this.apiKey,
         },
       });
@@ -51,7 +51,7 @@ export abstract class SandDBClient<T = unknown> {
         `${this.sandDBUrl}/groupBy`,
         {
           params: {
-            query,
+            query: JSON.stringify(query),
             apiKey: this.apiKey,
           },
         }
