@@ -26,7 +26,7 @@ describe("GroupByArgument", () => {
           },
         ],
       },
-      by: ["hoursSinceEpoch"],
+      by: ["hours_since_epoch"],
       _sum: {
         year: true,
       },
