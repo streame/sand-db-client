@@ -10,9 +10,9 @@ export type BaseArguments = {
   month?: true;
   day?: true;
   hour?: true;
-  minutesSinceEpoch?: true;
-  hoursSinceEpoch?: true;
-  daysSinceEpoch?: true;
+  minutes_since_epoch?: true;
+  hours_since_epoch?: true;
+  days_since_epoch?: true;
 };
 
 export type GroupByCombinedArguments<T> = GeneratedArguments<T> & BaseArguments;
