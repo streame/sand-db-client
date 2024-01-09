@@ -5,18 +5,18 @@ export type GeneratedArguments<T> = {
   [K in keyof T]?: true;
 };
 
-export type TimestampArguments = {
+export type BaseArguments = {
   year?: true;
   month?: true;
   day?: true;
   hour?: true;
+  _all?: true;
 };
 
-export type GroupByCombinedArguments<T> = GeneratedArguments<T> &
-  TimestampArguments;
+export type GroupByCombinedArguments<T> = GeneratedArguments<T> & BaseArguments;
 
 export interface GroupByArgument<T = unknown> {
-  by: (keyof T | keyof TimestampArguments)[];
+  by: (keyof T | keyof BaseArguments)[];
   where: CombinedArguments<T> & WhereSpecialCondition<T>;
   _count?: GroupByCombinedArguments<T>;
   _sum?: GroupByCombinedArguments<T>;

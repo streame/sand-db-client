@@ -21,14 +21,14 @@ export type GeneratedArguments<T> = {
   [K in keyof T]?: WhereCondition<T[K]>;
 };
 
-export type TimestampArguments = {
+export type BaseArguments = {
   year: WhereCondition<number>;
   month?: WhereCondition<number>;
   day?: WhereCondition<number>;
   hour?: WhereCondition<number>;
 };
 
-export type CombinedArguments<T> = GeneratedArguments<T> & TimestampArguments;
+export type CombinedArguments<T> = GeneratedArguments<T> & BaseArguments;
 
 export type WhereSpecialCondition<T> = {
   AND?: GeneratedArguments<T>[];

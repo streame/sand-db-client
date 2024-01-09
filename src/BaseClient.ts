@@ -3,7 +3,7 @@ import { GroupByArgument } from "./GroupByArgument.js";
 import { QueryArgument } from "./QueryArgument.js";
 import { QueryResult } from "./QueryResult.js";
 
-export abstract class SandDBClient<T> {
+export abstract class SandDBClient<T = unknown> {
   protected abstract endpoint: string;
   protected abstract versionNumber: number;
   protected abstract pipelineId: string;
@@ -44,6 +44,10 @@ export abstract class SandDBClient<T> {
     }
   }
 
+  public async groupBy(query: GroupByArgument<T>): Promise<QueryResult<T>> {
+    return this.query(query);
+  }
+
   public async rawQuery<U = T>(query: string): Promise<QueryResult<U>> {
     try {
       const result = await axios.get<QueryResult<U>>(`${this.sandDBUrl}/raw`, {
@@ -57,10 +61,6 @@ export abstract class SandDBClient<T> {
       console.error(err);
       throw new Error("Failed to raw query data from SandDB");
     }
-  }
-
-  public async groupBy(query: GroupByArgument<T>): Promise<QueryResult<T>> {
-    return this.query(query);
   }
 
   private get sandDBUrl(): string {
