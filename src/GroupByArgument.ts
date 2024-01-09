@@ -13,7 +13,6 @@ export type BaseArguments = {
   minutesSinceEpoch?: true;
   hoursSinceEpoch?: true;
   daysSinceEpoch?: true;
-  _all?: true;
 };
 
 export type GroupByCombinedArguments<T> = GeneratedArguments<T> & BaseArguments;

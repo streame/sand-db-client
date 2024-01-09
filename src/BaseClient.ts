@@ -1,5 +1,6 @@
 import axios from "axios";
 import { GroupByArgument } from "./GroupByArgument.js";
+import { GroupByResult } from "./GroupByResult.js";
 import { QueryArgument } from "./QueryArgument.js";
 import { QueryResult } from "./QueryResult.js";
 
@@ -44,8 +45,19 @@ export abstract class SandDBClient<T = unknown> {
     }
   }
 
-  public async groupBy(query: GroupByArgument<T>): Promise<QueryResult<T>> {
-    return this.query(query);
+  public async groupBy(query: GroupByArgument<T>): Promise<GroupByResult<T>> {
+    try {
+      const result = await axios.get<GroupByResult<T>>(this.sandDBUrl, {
+        params: {
+          query,
+          apiKey: this.apiKey,
+        },
+      });
+      return result.data;
+    } catch (err) {
+      console.error(err);
+      throw new Error("Failed to query data from SandDB");
+    }
   }
 
   public async rawQuery<U = T>(query: string): Promise<QueryResult<U>> {
