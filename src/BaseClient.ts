@@ -47,12 +47,15 @@ export abstract class SandDBClient<T = unknown> {
 
   public async groupBy(query: GroupByArgument<T>): Promise<GroupByResult<T>> {
     try {
-      const result = await axios.get<GroupByResult<T>>(this.sandDBUrl, {
-        params: {
-          query,
-          apiKey: this.apiKey,
-        },
-      });
+      const result = await axios.get<GroupByResult<T>>(
+        `${this.sandDBUrl}/groupBy`,
+        {
+          params: {
+            query,
+            apiKey: this.apiKey,
+          },
+        }
+      );
       return result.data;
     } catch (err) {
       console.error(err);
